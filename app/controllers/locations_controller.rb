@@ -30,7 +30,8 @@ class LocationsController < ApplicationController
 
     @location.destroy
 
-    render :index
+    # render :index
+    render json: { message: "Employee Destroyed" }
     # redirect_to "/locations"
     # render nothing: true
   end

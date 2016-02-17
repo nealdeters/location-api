@@ -17,9 +17,9 @@ default: &default
   password:
   socket: /tmp/mysql.sock
 
-development:
-  <<: *default
-  database: location-api_development
+# development:
+#   <<: *default
+#   database: location-api_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -47,8 +47,20 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
+# production:
+#   <<: *default
+#   database: location-api_production
+#   username: location-api
+#   password: <%= ENV['LOCATION-API_DATABASE_PASSWORD'] %>
+
+development:
   <<: *default
+  database: location-api_development
+
+
+production: 
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: location-api_production
-  username: location-api
-  password: <%= ENV['LOCATION-API_DATABASE_PASSWORD'] %>
+
